@@ -1,5 +1,6 @@
 FROM python:3.8-alpine
 ADD srcs/dependencies.txt /deps.txt
+ADD requirements.txt /requirements.txt
 RUN pip install -r deps.txt
 EXPOSE 8000
 COPY srcs /app

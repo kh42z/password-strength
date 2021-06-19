@@ -1,6 +1,6 @@
 from typing import List
 
-from nm_rules import RuleInterface
+from rules.RuleInterface import RuleInterface
 
 
 def validate_password(rules: List[RuleInterface], login: str, pwd: str):

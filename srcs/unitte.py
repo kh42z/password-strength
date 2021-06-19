@@ -1,12 +1,12 @@
 import unittest
 from load_rules import load_rules
 from validate_password import validate_password
-from nm_rules import InvalidPassword
+from rules.InvalidPassword import InvalidPassword
 
 
 class PwdRulesTestCase(unittest.TestCase):
     def test_validate_password(self):
-        rules = load_rules("requirements.txt")
+        rules = load_rules("../requirements.txt")
         testcases = [
             {"name": "pwd too short", "login": "herve", "pwd": "hey", "raise": True},
             {"name": "pwd not containing special symbols", "login": "herve", "pwd": "H3y3##", "raise": True},
@@ -17,7 +17,7 @@ class PwdRulesTestCase(unittest.TestCase):
         ]
         for case in testcases:
             if case['raise']:
-                with self.assertRaises(InvalidPassword, msg="[{}] got an unexpected exception".format(case["name"])):
+                with self.assertRaises(InvalidPassword, msg="[{}] should raise exception".format(case["name"])):
                     validate_password(rules, case["login"], case["pwd"])
             else:
                 try:

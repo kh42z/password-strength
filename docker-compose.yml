@@ -1,10 +1,13 @@
 version: '3.0'
 services:
-  fastapi:
+  uvicorn:
     build:
       context: .
     container_name: pwd_validator
     volumes:
       - ./srcs/:/app
+      - ./requirements.txt:/requirements.txt:ro
     ports:
       - "8000:8000"
+    environment:
+      REQUIREMENTS_PATH: "/requirements.txt"
