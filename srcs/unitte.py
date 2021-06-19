@@ -5,7 +5,7 @@ from nm_rules import InvalidPassword
 
 
 class PwdRulesTestCase(unittest.TestCase):
-    def test_assert_legit(self):
+    def test_validate_password(self):
         rules = load_rules("requirements.txt")
         testcases = [
             {"name": "pwd too short", "login": "herve", "pwd": "hey", "raise": True},

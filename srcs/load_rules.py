@@ -1,18 +1,12 @@
 from nm_rules import MustBeCharset
-from nm_rules import RuleInterface
 from nm_rules import MustContainCharset
 from nm_rules import MustNotContainLoginPart
 from pyhocon import ConfigFactory
 
-from typing import List
 
-
-def load_rules(filepath: str) -> List[RuleInterface]:
+def load_rules(filepath: str):
     rules_set = []
-    try:
-        conf = ConfigFactory.parse_file(filepath)
-    except OSError:
-        return rules_set
+    conf = ConfigFactory.parse_file(filepath)
     for r in conf["rules"]:
         rules_set.append(dispatch[r["name"]](r))
     return rules_set

@@ -1,0 +1,3 @@
+pyhocon
+fastapi
+uvicorn

@@ -1,0 +1,10 @@
+version: '3.0'
+services:
+  fastapi:
+    build:
+      context: .
+    container_name: pwd_validator
+    volumes:
+      - ./srcs/:/app
+    ports:
+      - "8000:8000"
