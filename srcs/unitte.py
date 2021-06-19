@@ -8,10 +8,11 @@ class PwdRulesTestCase(unittest.TestCase):
     def test_validate_password(self):
         rules = load_rules("../requirements.txt")
         testcases = [
-            {"name": "pwd too short", "login": "herve", "pwd": "hey", "raise": True},
+            {"name": "pwd too short", "login": "herve", "pwd": "###", "raise": True},
             {"name": "pwd not containing special symbols", "login": "herve", "pwd": "H3y3##", "raise": True},
             {"name": "unwanted char", "login": "herve", "pwd": "L3git/,?@", "raise": True},
-            {"name": "contains login", "login": "herve", "pwd": "legit,,,rve", "raise": True},
+            {"name": "contains login", "login": "herve", "pwd": "legit,,,herv", "raise": True},
+            {"name": "login part_length equals login len", "login": "rve", "pwd": "rve#232,,,", "raise": True},
             {"name": "legit", "login": "herve", "pwd": "hey###123", "raise": False},
             {"name": "legit long", "login": "herve", "pwd": "/,?tOto", "raise": False},
         ]
