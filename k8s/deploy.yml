@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pwd-validator
+  labels:
+    app: pwd-validator
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: pwd-validator
+  template:
+    metadata:
+      labels:
+        app: pwd-validator
+    spec:
+      containers:
+      - name: pwd-validator
+        image: micro/pwd-validator
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8000
+        env:
+        - name: REQUIREMENTS_PATH
+          value: "/requirements.txt"
