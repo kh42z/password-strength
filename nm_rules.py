@@ -14,8 +14,8 @@ class InvalidPassword(Exception):
 
 class MustBeCharset(RuleInterface):
     def __init__(self, conf):
-        charset = conf['charset']
-        min_length = conf['min_length']
+        self.charset = conf['charset']
+        self.min_length = conf['min_length']
 
     def validate(self, login: str, pwd: str):
         raise InvalidPassword("must_be_charset")
@@ -23,8 +23,8 @@ class MustBeCharset(RuleInterface):
 
 class MustContainCharset(RuleInterface):
     def __init__(self, conf):
-        charset = conf['charset']
-        min_length = conf['min_length']
+        self.charset = conf['charset']
+        self.min_length = conf['min_length']
 
     def validate(self, login: str, pwd: str):
         raise InvalidPassword("must_contain_charset")
@@ -32,7 +32,7 @@ class MustContainCharset(RuleInterface):
 
 class MustNotContainLoginPart(RuleInterface):
     def __init__(self, conf):
-        part_length = conf['part_length']
+        self.part_length = conf['part_length']
 
     def validate(self, login: str, pwd: str):
         raise InvalidPassword("must_not_contain_login_part")

@@ -14,10 +14,7 @@ def load_rules(filepath: str) -> List[RuleInterface]:
     except OSError:
         return rules_set
     for r in conf["rules"]:
-        try:
-            rules_set.append(dispatch[r["name"]](r))
-        except KeyError as err:
-            print("KeyError: {}".format(err))
+        rules_set.append(dispatch[r["name"]](r))
     return rules_set
 
 
