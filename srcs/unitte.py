@@ -31,6 +31,7 @@ class PwdRulesTestCase(unittest.TestCase):
         testcases = [
             {"name": "pwd too short", "login": "george", "pwd": "0123", "raise": True},
             {"name": "pwd min length", "login": "george", "pwd": "01299", "raise": False},
+            {"name": "pwd one special symbol", "login": "george", "pwd": "01288", "raise": True},
             {"name": "pwd not containing special symbols", "login": "george", "pwd": "234567", "raise": True},
             {"name": "pwd containing special symbols", "login": "george", "pwd": "0345699", "raise": False},
             {"name": "unwanted char", "login": "herve", "pwd": "A01234599", "raise": True},
