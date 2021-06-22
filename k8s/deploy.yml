@@ -5,7 +5,7 @@ metadata:
   labels:
     app: pwd-validator
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: pwd-validator
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: pwd-validator
-        image: micro/pwd-validator
+        image: pwd-validator
         imagePullPolicy: Never
         ports:
         - containerPort: 8000
