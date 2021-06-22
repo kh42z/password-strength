@@ -36,7 +36,7 @@ jobs:
           kubectl apply -f k8s/svc.yml
           kubectl apply -f k8s/deploy.yml
           kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/provider/kind/deploy.yaml
-          kubetcl apply -f k8s/nginx.yml
+          kubectl apply -f k8s/nginx.yml
       - name: Test deployement
         run: |
           curl -s -X POST "http://localhost/validate" -H  "accept: application/json" -H  "Content-Type: application/json" -d "{\"login\":\"toto\", \"password\":\"weak\"}"
