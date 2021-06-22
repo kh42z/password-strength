@@ -35,6 +35,7 @@ jobs:
           config: k8s/cluster.yml
       - name: Deploy image
         run: |
+          kind load docker-image pwd-validator
           kubectl apply -f k8s/svc.yml
           kubectl apply -f k8s/deploy.yml
           kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/provider/kind/deploy.yaml
