@@ -33,6 +33,7 @@ jobs:
         uses: helm/kind-action@v1.1.0
         with:
           config: k8s/cluster.yml
+          cluster_name: kind
       - name: Deploy image
         run: |
           kind load docker-image pwd-validator
