@@ -26,12 +26,12 @@ jobs:
     needs: [unittests]
     steps:
       - uses: actions/checkout@v2
-      - name: build
+      - name: Build image
         run: |
           docker build -t pwd-validator .
       - name: Kind Cluster
         uses: helm/kind-action@v1.1.0
-      - name: Deploy
+      - name: Deploy image
         run: |
           kubectl apply -f k8s/svc.yml
           kubectl apply -f k8s/deploy.yml
@@ -39,9 +39,9 @@ jobs:
           kubectl wait --namespace ingress-nginx \
             --for=condition=ready pod \
             --selector=app.kubernetes.io/component=controller \
-            --timeout=90s
+            --timeout=180s
           kubetcl apply -f k8s/nginx.yml
-      - name: Curl
+      - name: Test deployement
         run: |
           curl -s -X POST "http://127.0.0.1:8000/validate" -H  "accept: application/json" -H  "Content-Type: application/json" -d "{\"login\":\"toto\", \"password\":\"weak\"}"
 
