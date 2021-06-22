@@ -1,0 +1,6 @@
+rules = [
+    {"name": "must_be_charset", "charset": "[0-9]", "min_length": 5},
+    {"name": "must_contain_charset", "charset": "[0]", "min_length": 1},
+    {"name": "must_contain_charset", "charset": "[99]", "min_length": 2},
+    {"name": "must_not_contain_login_part", "part_length": 3}
+]
