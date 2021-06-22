@@ -28,6 +28,13 @@ jobs:
       - uses: actions/checkout@v2
       - name: build
         run: |
-          docker build -t pwd_validator .
+          docker build -t pwd-validator .
+      - name: Create k8s Kind Cluster
+        uses: helm/kind-action@v1.1.0
+      - name: deploy
+        run: |
+          kubectl cluster-info
+          kubectl deploy -f k8s/svc.yml
+          kubectl deploy -f k8s/deploy.yml
 
 
